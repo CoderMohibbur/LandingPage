@@ -35,6 +35,69 @@
             overflow-x: hidden;
         }
     </style>
+
+    {{-- hero section slide --}}
+    <style>
+        @keyframes leftToRight {
+            0% {
+                transform: translateX(-50px);
+            }
+
+            100% {
+                transform: translateX(50px);
+            }
+        }
+
+        @keyframes rightToLeft {
+            0% {
+                transform: translateX(50px);
+            }
+
+            100% {
+                transform: translateX(-50px);
+            }
+        }
+
+        .float-left-1 {
+            animation: leftToRight 6s ease-in-out infinite alternate;
+            top: 5%;
+            left: 2%;
+            width: 180px;
+            position: absolute;
+            z-index: 0;
+        }
+
+        .float-left-2 {
+            animation: leftToRight 8s ease-in-out infinite alternate;
+            top: 35%;
+            left: 20%;
+            width: 180px;
+            position: absolute;
+            z-index: 0;
+        }
+
+        .float-right-3 {
+            animation: rightToLeft 7s ease-in-out infinite alternate;
+            top: 10%;
+            right: 2%;
+            width: 180px;
+            position: absolute;
+            z-index: 0;
+        }
+
+        .scrolling-img {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 160px;
+            z-index: 0;
+            animation: scrollVertical 18s linear infinite;
+        }
+    </style>
+
+
+
 </head>
 
 <body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-white">
@@ -112,41 +175,186 @@
 
 
     <!-- Hero Section -->
-    <section
-        class="min-h-screen bg-gradient-to-br from-indigo-900 via-indigo-700 to-blue-600 text-white flex flex-col justify-center items-center text-center px-6 sm:px-12 lg:px-24 relative overflow-hidden"
-        data-aos="zoom-in">
-        <div class="z-10 max-w-3xl">
-            <h1 class="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-tight mb-6">
-                <span class="text-white">Your Powerful Tagline</span><br>
-                <span class="text-yellow-400">That Captures Attention</span>
+    <!-- Ecommerce Hero Section -->
+    {{-- <section
+        class="relative min-h-screen bg-gradient-to-br from-indigo-900 via-indigo-700 to-blue-600 text-white flex items-center justify-center px-6 sm:px-12 lg:px-24 overflow-hidden">
+        <!-- Left Content -->
+        <div class="z-10 max-w-4xl text-center lg:text-left space-y-6" data-aos="fade-right">
+            <p class="uppercase text-sm tracking-wider text-yellow-300 font-medium">নতুন কালেকশন এসেছে!</p>
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight">
+                ট্রেন্ডি প্রোডাক্ট এখন <span class="text-yellow-400">বিশেষ দামে</span>
             </h1>
-            <p class="text-lg sm:text-xl mb-8 text-indigo-100">
-                Sub-headline that supports the main message with clarity and impact.
-            </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#pricing"
-                    class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold px-8 py-3 rounded-full transition shadow-lg">
-                    Get Started
+            <p class="text-lg sm:text-xl text-indigo-100">আমাদের ই-কমার্স স্টোরে রয়েছে নতুন প্রোডাক্ট, দ্রুত ডেলিভারি,
+                সেরা দামে।</p>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <a href="#products"
+                    class="bg-yellow-400 hover:bg-yellow-500 text-indigo-900 font-bold px-8 py-3 rounded-full transition shadow-lg">
+                    এখনই কিনুন
                 </a>
                 <a href="#features"
                     class="border border-white/70 text-white hover:bg-white hover:text-indigo-700 backdrop-blur-md font-semibold px-8 py-3 rounded-full transition">
-                    Learn More
+                    আরও জানুন
                 </a>
             </div>
         </div>
 
-        <!-- Hero Illustration -->
-        <div class="absolute bottom-0 right-0 w-64 sm:w-80 md:w-96 opacity-50" data-aos="fade-left">
-            <img src="https://via.placeholder.com/400x400" alt="Hero Image"
-                class="drop-shadow-xl hover:opacity-60 transition duration-500">
+        <!-- Right Image -->
+        <div class="hidden lg:block absolute right-0 bottom-0 w-[400px] h-auto z-0" data-aos="fade-left">
+            <img src="https://via.placeholder.com/400x500?text=Product" alt="Featured Product"
+                class="drop-shadow-2xl rounded-xl transform hover:scale-105 transition duration-500">
         </div>
 
-        <!-- Scroll Indicator -->
-        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce z-20">
-            <a href="#trusted"
-                class="text-white text-3xl hover:opacity-80 drop-shadow-lg transition duration-300">&#x25BC;</a>
+        <!-- Scroll Down Indicator -->
+        <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 animate-bounce z-10">
+            <a href="#products" class="text-white text-3xl hover:opacity-80 transition">&#x25BC;</a>
+        </div>
+    </section> --}}
+
+
+
+    <!-- Hero Section -->
+    <!-- Hero Section -->
+    <section
+        class="relative min-h-screen bg-gradient-to-br from-indigo-900 via-indigo-700 to-blue-600 text-white flex items-center justify-center px-6 sm:px-12 lg:px-24 overflow-hidden">
+
+        <!-- Left Content -->
+        <div class="z-10 max-w-4xl text-center lg:text-left space-y-6" data-aos="fade-right">
+            <p class="uppercase text-sm tracking-wider text-yellow-300 font-medium">নতুন কালেকশন এসেছে!</p>
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight">
+                ট্রেন্ডি প্রোডাক্ট এখন <span class="text-yellow-400">বিশেষ দামে</span>
+            </h1>
+            <p class="text-lg sm:text-xl text-indigo-100">
+                আমাদের ই-কমার্স স্টোরে রয়েছে নতুন প্রোডাক্ট, দ্রুত ডেলিভারি, সেরা দামে।
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <a href="#products"
+                    class="bg-yellow-400 hover:bg-yellow-500 text-indigo-900 font-bold px-8 py-3 rounded-full transition shadow-lg">
+                    এখনই কিনুন
+                </a>
+                <a href="#features"
+                    class="border border-white/70 text-white hover:bg-white hover:text-indigo-700 backdrop-blur-md font-semibold px-8 py-3 rounded-full transition">
+                    আরও জানুন
+                </a>
+            </div>
+        </div>
+
+        <!-- Right Image -->
+        <div class="hidden lg:block absolute right-0 bottom-0 w-[400px] h-auto z-0" data-aos="fade-left">
+            <img src="#" alt="Featured Product"
+                class="drop-shadow-2xl rounded-xl transform hover:scale-105 transition duration-500">
+        </div>
+
+        <!-- Floating Images - dynamically spaced and larger -->
+        <img src="{{ asset('images/hero-image/1.png') }}" alt="Left1" class="floating-img float-left-1">
+        <img src="{{ asset('images/hero-image/2.png') }}" alt="Center" class="floating-img float-left-2">
+        <img src="{{ asset('images/hero-image/3.png') }}" alt="Right3" class="floating-img float-right-3">
+        <img src="{{ asset('images/hero-image/1.png') }}" alt="Scrolling" id="scrollingImage" class="scrolling-img">
+
+
+        <!-- Floating Images - Directional Horizontal Animation -->
+        <img src="{{ asset('images/hero-image/1.png') }}" alt="Left1" class="float-left-1">
+        <img src="{{ asset('images/hero-image/2.png') }}" alt="Center" class="float-left-2">
+        <img src="{{ asset('images/hero-image/3.png') }}" alt="Right3" class="float-right-3">
+        <img src="{{ asset('images/hero-image/1.png') }}" alt="Scrolling" id="scrollingImage" class="scrolling-img">
+
+
+        <!-- Scroll Down Indicator -->
+        <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 animate-bounce z-10">
+            <a href="#products" class="text-white text-3xl hover:opacity-80 transition">&#x25BC;</a>
         </div>
     </section>
+
+
+
+    <!-- Featured Products Section -->
+    <!-- Featured Products Section -->
+    <section id="featured-products"
+        class="py-24 bg-gradient-to-br from-indigo-50 via-white to-blue-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900"
+        data-aos="fade-up">
+        <div class="max-w-7xl mx-auto px-6">
+            <!-- Heading -->
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-extrabold text-indigo-700 dark:text-yellow-400">Featured Products</h2>
+                <p class="text-lg text-gray-600 dark:text-gray-300 mt-2">সেরা পণ্যের কালেকশন — এখনই অর্ডার করুন।</p>
+            </div>
+
+            <!-- Product Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-10">
+                @foreach (range(1, 8) as $i)
+                    <div class="group bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-md hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300"
+                        data-aos="zoom-in-up" data-aos-delay="{{ $i * 100 }}">
+
+                        <!-- Product Image (centered and fixed size) -->
+                        <div class="flex items-center justify-center bg-gray-100 dark:bg-gray-700 h-56 overflow-hidden">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSy4m9ZI9eplLQxTz14bVdAX9yyl7rvvt7O1Q&s+{{ $i }}"
+                                alt="Product {{ $i }}"
+                                class="w-full h-40 object-contain group-hover:scale-105 transition duration-300">
+                        </div>
+
+                        <!-- Product Details -->
+                        <div class="p-5 text-center">
+                            <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-2">Product Name
+                                {{ $i }}</h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">বর্ণনা বা প্রধান বৈশিষ্ট্য
+                                সংক্ষেপে।</p>
+                            <div class="text-indigo-600 dark:text-yellow-400 font-bold text-lg mb-3">
+                                ৳{{ $i * 1000 }}</div>
+
+                            <!-- CTA Button -->
+                            <a href="#"
+                                class="inline-block bg-indigo-600 dark:bg-yellow-400 text-white dark:text-indigo-800 px-5 py-2 pb-10 rounded-full font-semibold hover:bg-indigo-700 dark:hover:bg-yellow-500 transition-all mb-10">
+                                🛒 Add to Cart
+                            </a>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Why Choose Us Section -->
+    <section id="why-choose-us" class="py-24 bg-white dark:bg-gray-900 text-gray-800 dark:text-white"
+        data-aos="fade-up">
+        <div class="max-w-7xl mx-auto px-6">
+            <!-- Section Header -->
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-extrabold text-indigo-700 dark:text-yellow-400">আমাদের কেন বেছে নেবেন?</h2>
+                <p class="text-lg text-gray-600 dark:text-gray-300 mt-2">আমরা দিচ্ছি এমন কিছু সুবিধা যা আপনার জন্য সেরা
+                    সিদ্ধান্ত হতে পারে।</p>
+            </div>
+
+            <!-- Feature Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+                @foreach ([['icon' => '🚀', 'title' => 'দ্রুত ডেলিভারি', 'desc' => 'বাংলাদেশজুড়ে ২৪–৪৮ ঘণ্টার মধ্যে পণ্য পৌঁছে দেওয়া হয়।'], ['icon' => '✅', 'title' => '১০০% অরিজিনাল পণ্য', 'desc' => 'সব পণ্য ব্র্যান্ড অথেন্টিক এবং ওয়ারেন্টি সহ।'], ['icon' => '📞', 'title' => '২৪/৭ সাপোর্ট', 'desc' => 'যেকোনো সময়ে আমাদের টিম আপনার পাশে আছে।'], ['icon' => '💰', 'title' => 'মানি ব্যাক গ্যারান্টি', 'desc' => 'সন্তুষ্ট না হলে ৭ দিনের মধ্যে রিফান্ড নিন।']] as $i => $item)
+                    <div class="group bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-3xl p-8 shadow transition-all duration-300 transform hover:-translate-y-2 hover:shadow-yellow-300 dark:hover:shadow-yellow-400/30"
+                        data-aos="zoom-in-up" data-aos-delay="{{ $i * 100 }}">
+
+                        <!-- Icon -->
+                        <div
+                            class="w-16 h-16 flex items-center justify-center mx-auto mb-6 rounded-full text-3xl bg-indigo-100 dark:bg-indigo-700 text-indigo-600 dark:text-white group-hover:scale-110 transition">
+                            {{ $item['icon'] }}
+                        </div>
+
+                        <!-- Title -->
+                        <h3
+                            class="text-xl font-bold text-center mb-2 group-hover:text-indigo-700 dark:group-hover:text-yellow-400 transition">
+                            {{ $item['title'] }}
+                        </h3>
+
+                        <!-- Description -->
+                        <p class="text-sm text-center text-gray-600 dark:text-gray-300">
+                            {{ $item['desc'] }}
+                        </p>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+
 
 
     <!-- Trusted Logos -->
@@ -167,44 +375,37 @@
     </section>
 
 
-
-    <!-- Features Section -->
-    <section id="features"
-        class="py-24 bg-gradient-to-br from-blue-50 via-white to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 text-gray-800 dark:text-gray-100"
-        data-aos="fade-up">
+    <!-- Product Slider Section -->
+    <section id="slider-section"
+        class="py-16 bg-gradient-to-br from-indigo-50 via-white to-blue-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
         <div class="max-w-7xl mx-auto px-6">
-            <h2 class="text-4xl font-extrabold text-center text-indigo-700 dark:text-yellow-400 mb-4">
-                আমাদের বিশেষ সুবিধাসমূহ
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-center text-indigo-700 dark:text-yellow-400 mb-8">
+                ফিচারড প্রোডাক্টস
             </h2>
-            <p class="text-center text-lg text-gray-600 dark:text-gray-300 mb-16 max-w-2xl mx-auto">
-                বাংলাদেশি ইউজারদের জন্য তৈরি — দ্রুত, নির্ভরযোগ্য, এবং শতভাগ সন্তুষ্টির গ্যারান্টি সহ।
-            </p>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-                @foreach ([['icon' => 'M3 10h2l1 2h13l1-2h2m-2 0a9 9 0 01-18 0', 'title' => 'দ্রুততম ডেলিভারি', 'desc' => 'সারা দেশে ২৪ ঘণ্টার মধ্যে নিশ্চিত ডেলিভারি। ট্র্যাকিং সহ আপডেট।'], ['icon' => 'M9 12l2 2 4-4m5 2a9 9 0 11-18 0 9 9 0 0118 0z', 'title' => '১০০% অরিজিনাল পণ্য', 'desc' => 'ব্র্যান্ড ভেরিফায়েড প্রোডাক্টস – গ্যারান্টি সহ অরিজিনাল পণ্য।'], ['icon' => 'M8 10h.01M12 10h.01M16 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z', 'title' => '২৪/৭ কাস্টমার সাপোর্ট', 'desc' => 'দিন রাত যেকোনো সময় সহায়তা – লাইভ চ্যাট ও ফোন সাপোর্ট।']] as $index => $feature)
-                    <div class="group bg-white dark:bg-gray-800 rounded-3xl border border-gray-200 dark:border-gray-700 shadow-md hover:shadow-xl hover:shadow-yellow-200 dark:hover:shadow-yellow-400/20 transition-all duration-300 transform hover:-translate-y-1 p-8"
-                        data-aos="zoom-in-up" data-aos-delay="{{ $index * 150 }}">
-                        <div
-                            class="flex justify-center items-center w-16 h-16 rounded-full bg-indigo-100 dark:bg-indigo-700 mb-6 mx-auto transition duration-300 group-hover:scale-110">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-indigo-600 dark:text-white"
-                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="{{ $feature['icon'] }}" />
-                            </svg>
-                        </div>
-                        <h3
-                            class="text-xl font-bold text-center mb-2 group-hover:text-indigo-700 dark:group-hover:text-yellow-400 transition">
-                            {{ $feature['title'] }}
-                        </h3>
-                        <p class="text-sm text-center text-gray-600 dark:text-gray-300">
-                            {{ $feature['desc'] }}
-                        </p>
-                    </div>
-                @endforeach
+            <div class="splide" id="product-slider">
+                <div class="splide__track">
+                    <ul class="splide__list">
+                        @foreach (range(1, 6) as $i)
+                            <li class="splide__slide">
+                                <div
+                                    class="bg-white dark:bg-gray-800 rounded-2xl p-4 shadow hover:shadow-xl transition-all duration-300 group">
+                                    <img src="https://via.placeholder.com/300x200?text=Product+{{ $i }}"
+                                        alt="Product {{ $i }}"
+                                        class="w-full h-48 object-cover rounded-lg mb-4 group-hover:scale-105 transition">
+                                    <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-1">পণ্য নাম
+                                        {{ $i }}</h3>
+                                    <p class="text-sm text-gray-500 dark:text-gray-300 mb-2">বিস্তারিত বিবরণ</p>
+                                    <div class="text-indigo-600 dark:text-yellow-400 font-bold text-lg">৳
+                                        {{ $i }}99</div>
+                                </div>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
-
 
 
     <!-- Testimonials Section -->
@@ -717,6 +918,27 @@
                 top: 0,
                 behavior: 'smooth'
             });
+        }
+    </script>
+
+
+    {{-- hero section slider --}}
+    <script>
+        const scrollImg = document.getElementById("scrollingImage");
+        const footer = document.querySelector("footer");
+
+        if (footer && scrollImg) {
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        scrollImg.style.animation = 'none';
+                        void scrollImg.offsetWidth; // reflow trigger
+                        scrollImg.style.animation = 'scrollVertical 18s linear infinite';
+                    }
+                });
+            });
+
+            observer.observe(footer);
         }
     </script>
 

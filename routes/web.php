@@ -15,3 +15,8 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+
+Route::get('/e-commerce', function () {
+    return view('pages.e-commerce');
+})->name('e-commerce');

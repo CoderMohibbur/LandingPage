@@ -6,14 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Laravel Landing</title>
 
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
 
+    <!-- Tailwind CSS -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <!-- Splide CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.3/dist/css/splide.min.css">
+
+
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 
+
+    {{-- Mouse Trail effect --}}
     <style>
         .cursor-dot {
             position: fixed;
@@ -26,141 +34,82 @@
             pointer-events: none;
             z-index: 9999;
             transform: translate(-50%, -50%);
+            transition: background 0.3s ease;
             will-change: transform;
         }
-
-        html {
-            scroll-behavior: smooth;
-            will-change: scroll-position;
-            overflow-x: hidden;
-        }
     </style>
+
+
+
+
+
+
 </head>
 
 <body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-white">
 
-
     {{-- Menu header --}}
-    <header x-data="{ scrolled: false }" x-init="window.addEventListener('scroll', () => { scrolled = window.scrollY > 50 })"
-        :class="scrolled
-            ?
-            'bg-white dark:bg-gray-900 shadow-md text-gray-900 dark:text-white' :
-            'bg-transparent text-white'"
-        class="fixed top-0 w-full z-50 transition-all duration-300">
-
+    <!-- Header Navigation -->
+    <header x-data="{ scrolled: false }" x-init="window.addEventListener('scroll', () => { scrolled = window.scrollY > 10 })"
+        :class="{ 'bg-white/90 shadow-lg dark:bg-gray-900/90': scrolled }"
+        class="fixed top-0 w-full z-50 transition-all duration-300 bg-opacity-90">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-
-            <!-- Brand -->
-            <a href="#"
-                :class="scrolled
-                    ?
-                    'text-indigo-700 dark:text-yellow-400' :
-                    'text-white'"
-                class="text-2xl font-bold transition duration-300">
-                BrandName
-            </a>
-
-            <!-- Menu -->
+            <a href="#" class="text-2xl font-bold text-indigo-700 dark:text-yellow-400">BrandName</a>
             <nav class="hidden md:flex space-x-6 text-sm font-medium">
-                <a href="#features"
-                    :class="scrolled
-                        ?
-                        'hover:text-indigo-600 dark:hover:text-yellow-400 text-gray-900 dark:text-white' :
-                        'text-white hover:text-yellow-300'"
-                    class="transition duration-300">বৈশিষ্ট্য</a>
-
-                <a href="#services"
-                    :class="scrolled
-                        ?
-                        'hover:text-indigo-600 dark:hover:text-yellow-400 text-gray-900 dark:text-white' :
-                        'text-white hover:text-yellow-300'"
-                    class="transition duration-300">সার্ভিস</a>
-
-                <a href="#pricing"
-                    :class="scrolled
-                        ?
-                        'hover:text-indigo-600 dark:hover:text-yellow-400 text-gray-900 dark:text-white' :
-                        'text-white hover:text-yellow-300'"
-                    class="transition duration-300">প্রাইসিং</a>
-
-                <a href="#faq"
-                    :class="scrolled
-                        ?
-                        'hover:text-indigo-600 dark:hover:text-yellow-400 text-gray-900 dark:text-white' :
-                        'text-white hover:text-yellow-300'"
-                    class="transition duration-300">FAQ</a>
-
-                <a href="#contact"
-                    :class="scrolled
-                        ?
-                        'hover:text-indigo-600 dark:hover:text-yellow-400 text-gray-900 dark:text-white' :
-                        'text-white hover:text-yellow-300'"
-                    class="transition duration-300">যোগাযোগ</a>
+                <a href="#features" class="hover:text-indigo-600">বৈশিষ্ট্য</a>
+                <a href="#services" class="hover:text-indigo-600">সার্ভিস</a>
+                <a href="#pricing" class="hover:text-indigo-600">প্রাইসিং</a>
+                <a href="#faq" class="hover:text-indigo-600">FAQ</a>
+                <a href="#contact" class="hover:text-indigo-600">যোগাযোগ</a>
             </nav>
-
-            <!-- Button -->
             <a href="#order-now"
-                :class="scrolled
-                    ?
-                    'bg-indigo-600 text-white hover:bg-indigo-700' :
-                    'bg-white/10 text-white hover:bg-white/20'"
-                class="hidden md:block px-4 py-2 rounded-full text-sm font-semibold transition duration-300">
+                class="hidden md:block px-4 py-2 bg-indigo-600 text-white rounded-full hover:bg-indigo-700 text-sm font-semibold transition">
                 অর্ডার করুন
             </a>
         </div>
     </header>
 
 
+
     <!-- Hero Section -->
     <section
-        class="min-h-screen bg-gradient-to-br from-indigo-900 via-indigo-700 to-blue-600 text-white flex flex-col justify-center items-center text-center px-6 sm:px-12 lg:px-24 relative overflow-hidden"
+        class="min-h-screen bg-gradient-to-br from-blue-700 via-indigo-800 to-purple-700 text-white flex flex-col justify-center items-center text-center px-6 sm:px-12 lg:px-24 relative overflow-hidden"
         data-aos="zoom-in">
         <div class="z-10 max-w-3xl">
-            <h1 class="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-tight mb-6">
-                <span class="text-white">Your Powerful Tagline</span><br>
-                <span class="text-yellow-400">That Captures Attention</span>
-            </h1>
-            <p class="text-lg sm:text-xl mb-8 text-indigo-100">
-                Sub-headline that supports the main message with clarity and impact.
-            </p>
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-tight mb-6">Your Powerful
+                Tagline <br><span class="text-yellow-300">That Captures Attention</span></h1>
+            <p class="text-lg sm:text-xl mb-8">Sub-headline that supports the main message with clarity and impact.</p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
                 <a href="#pricing"
-                    class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold px-8 py-3 rounded-full transition shadow-lg">
-                    Get Started
-                </a>
+                    class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold px-8 py-3 rounded-full transition shadow-lg">Get
+                    Started</a>
                 <a href="#features"
-                    class="border border-white/70 text-white hover:bg-white hover:text-indigo-700 backdrop-blur-md font-semibold px-8 py-3 rounded-full transition">
-                    Learn More
-                </a>
+                    class="border border-white text-white hover:bg-white hover:text-indigo-700 font-semibold px-8 py-3 rounded-full transition">Learn
+                    More</a>
             </div>
         </div>
 
         <!-- Hero Illustration -->
-        <div class="absolute bottom-0 right-0 w-64 sm:w-80 md:w-96 opacity-50" data-aos="fade-left">
-            <img src="https://via.placeholder.com/400x400" alt="Hero Image"
-                class="drop-shadow-xl hover:opacity-60 transition duration-500">
+        <div class="absolute bottom-0 right-0 w-64 sm:w-80 md:w-96 opacity-60" data-aos="fade-left">
+            <img src="https://via.placeholder.com/400x400" alt="Hero Image">
         </div>
 
         <!-- Scroll Indicator -->
         <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce z-20">
-            <a href="#trusted"
-                class="text-white text-3xl hover:opacity-80 drop-shadow-lg transition duration-300">&#x25BC;</a>
+            <a href="#trusted" class="text-white text-3xl">&#x25BC;</a>
         </div>
     </section>
-
 
     <!-- Trusted Logos -->
     <section id="trusted" class="py-16 bg-white dark:bg-gray-900" data-aos="fade-up">
         <div class="max-w-6xl mx-auto px-4 text-center">
             <h2 class="text-xl font-semibold text-gray-700 dark:text-gray-300 mb-8 uppercase tracking-wider">Trusted By
             </h2>
-            <div class="flex flex-wrap justify-center items-center gap-8 sm:gap-10 md:gap-12">
+            <div class="flex flex-wrap justify-center items-center gap-8">
                 @foreach (range(1, 6) as $i)
-                    <div
-                        class="bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-lg px-6 py-3 transition-all duration-300 transform hover:-translate-y-1 grayscale hover:grayscale-0">
-                        <img src="https://via.placeholder.com/120x60?text=Logo+{{ $i }}"
-                            class="h-10 sm:h-12 object-contain mx-auto" alt="Logo {{ $i }}">
-                    </div>
+                    <img src="https://via.placeholder.com/120x60?text=Logo+{{ $i }}"
+                        class="grayscale hover:grayscale-0 transition duration-300 h-10 sm:h-12"
+                        alt="Logo {{ $i }}">
                 @endforeach
             </div>
         </div>
@@ -173,37 +122,63 @@
         class="py-24 bg-gradient-to-br from-blue-50 via-white to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 text-gray-800 dark:text-gray-100"
         data-aos="fade-up">
         <div class="max-w-7xl mx-auto px-6">
-            <h2 class="text-4xl font-extrabold text-center text-indigo-700 dark:text-yellow-400 mb-4">
-                আমাদের বিশেষ সুবিধাসমূহ
-            </h2>
-            <p class="text-center text-lg text-gray-600 dark:text-gray-300 mb-16 max-w-2xl mx-auto">
-                বাংলাদেশি ইউজারদের জন্য তৈরি — দ্রুত, নির্ভরযোগ্য, এবং শতভাগ সন্তুষ্টির গ্যারান্টি সহ।
-            </p>
+            <h2 class="text-4xl font-extrabold text-center text-indigo-700 dark:text-yellow-400 mb-4">আমাদের বিশেষ
+                সুবিধাসমূহ</h2>
+            <p class="text-center text-lg text-gray-600 dark:text-gray-300 mb-16 max-w-2xl mx-auto">বাংলাদেশি ইউজারদের
+                জন্য তৈরি — দ্রুত, নির্ভরযোগ্য, এবং শতভাগ সন্তুষ্টির গ্যারান্টি সহ।</p>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-                @foreach ([['icon' => 'M3 10h2l1 2h13l1-2h2m-2 0a9 9 0 01-18 0', 'title' => 'দ্রুততম ডেলিভারি', 'desc' => 'সারা দেশে ২৪ ঘণ্টার মধ্যে নিশ্চিত ডেলিভারি। ট্র্যাকিং সহ আপডেট।'], ['icon' => 'M9 12l2 2 4-4m5 2a9 9 0 11-18 0 9 9 0 0118 0z', 'title' => '১০০% অরিজিনাল পণ্য', 'desc' => 'ব্র্যান্ড ভেরিফায়েড প্রোডাক্টস – গ্যারান্টি সহ অরিজিনাল পণ্য।'], ['icon' => 'M8 10h.01M12 10h.01M16 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z', 'title' => '২৪/৭ কাস্টমার সাপোর্ট', 'desc' => 'দিন রাত যেকোনো সময় সহায়তা – লাইভ চ্যাট ও ফোন সাপোর্ট।']] as $index => $feature)
-                    <div class="group bg-white dark:bg-gray-800 rounded-3xl border border-gray-200 dark:border-gray-700 shadow-md hover:shadow-xl hover:shadow-yellow-200 dark:hover:shadow-yellow-400/20 transition-all duration-300 transform hover:-translate-y-1 p-8"
-                        data-aos="zoom-in-up" data-aos-delay="{{ $index * 150 }}">
-                        <div
-                            class="flex justify-center items-center w-16 h-16 rounded-full bg-indigo-100 dark:bg-indigo-700 mb-6 mx-auto transition duration-300 group-hover:scale-110">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-indigo-600 dark:text-white"
-                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="{{ $feature['icon'] }}" />
-                            </svg>
-                        </div>
-                        <h3
-                            class="text-xl font-bold text-center mb-2 group-hover:text-indigo-700 dark:group-hover:text-yellow-400 transition">
-                            {{ $feature['title'] }}
-                        </h3>
-                        <p class="text-sm text-center text-gray-600 dark:text-gray-300">
-                            {{ $feature['desc'] }}
-                        </p>
+                <!-- Feature Card 1 -->
+                <div class="bg-white dark:bg-gray-800 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-105 p-8"
+                    data-aos="zoom-in-up">
+                    <div
+                        class="flex justify-center items-center w-16 h-16 rounded-full bg-indigo-100 dark:bg-indigo-700 mb-6 mx-auto">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-indigo-600 dark:text-white"
+                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 10h2l1 2h13l1-2h2m-2 0a9 9 0 01-18 0" />
+                        </svg>
                     </div>
-                @endforeach
+                    <h3 class="text-xl font-bold text-center mb-2">দ্রুততম ডেলিভারি</h3>
+                    <p class="text-sm text-center text-gray-600 dark:text-gray-300">সারা দেশে ২৪ ঘণ্টার মধ্যে নিশ্চিত
+                        ডেলিভারি। ট্র্যাকিং সহ আপডেট।</p>
+                </div>
+
+                <!-- Feature Card 2 -->
+                <div class="bg-white dark:bg-gray-800 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-105 p-8"
+                    data-aos="zoom-in-up" data-aos-delay="150">
+                    <div
+                        class="flex justify-center items-center w-16 h-16 rounded-full bg-indigo-100 dark:bg-indigo-700 mb-6 mx-auto">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-indigo-600 dark:text-white"
+                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12l2 2 4-4m5 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-2">১০০% অরিজিনাল পণ্য</h3>
+                    <p class="text-sm text-center text-gray-600 dark:text-gray-300">ব্র্যান্ড ভেরিফায়েড প্রোডাক্টস –
+                        গ্যারান্টি সহ অরিজিনাল পণ্য।</p>
+                </div>
+
+                <!-- Feature Card 3 -->
+                <div class="bg-white dark:bg-gray-800 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-105 p-8"
+                    data-aos="zoom-in-up" data-aos-delay="300">
+                    <div
+                        class="flex justify-center items-center w-16 h-16 rounded-full bg-indigo-100 dark:bg-indigo-700 mb-6 mx-auto">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-indigo-600 dark:text-white"
+                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8 10h.01M12 10h.01M16 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-2">২৪/৭ কাস্টমার সাপোর্ট</h3>
+                    <p class="text-sm text-center text-gray-600 dark:text-gray-300">দিন রাত যেকোনো সময় সহায়তা – লাইভ
+                        চ্যাট ও ফোন সাপোর্ট।</p>
+                </div>
             </div>
         </div>
     </section>
+
 
 
 
@@ -212,29 +187,25 @@
         class="py-24 bg-gradient-to-b from-blue-100 via-white to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 text-gray-800 dark:text-white"
         data-aos="fade-up">
         <div class="max-w-7xl mx-auto px-6">
-            <h2 class="text-4xl font-extrabold text-center text-indigo-700 dark:text-yellow-400 mb-6">
-                ক্লায়েন্টদের রিভিউ
-            </h2>
+            <h2 class="text-4xl font-extrabold text-center text-indigo-700 dark:text-yellow-400 mb-6">ক্লায়েন্টদের
+                রিভিউ</h2>
             <p class="text-center text-lg text-gray-600 dark:text-gray-300 mb-16 max-w-2xl mx-auto">
                 আমাদের নিয়ে যা বলছেন সন্তুষ্ট গ্রাহকেরা — আপনার মতো আরও অনেকেই!
             </p>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
                 @foreach ([1, 2, 3] as $i)
-                    <div class="group bg-white/70 dark:bg-gray-800/80 backdrop-blur-xl border border-gray-200 dark:border-gray-700 rounded-3xl p-8 shadow-lg hover:shadow-2xl hover:shadow-yellow-200 dark:hover:shadow-yellow-400/20 transition-all duration-300 transform hover:-translate-y-2 text-center"
+                    <div class="bg-white/70 dark:bg-gray-800/80 backdrop-blur-xl border border-gray-100 dark:border-gray-700 rounded-3xl p-8 shadow-2xl hover:shadow-xl transition hover:scale-[1.02] hover:shadow-yellow-200 dark:hover:shadow-yellow-400/20 text-center"
                         data-aos="fade-up" data-aos-delay="{{ $i * 100 }}">
-
                         <!-- Image -->
                         <div class="flex justify-center mb-5">
                             <img src="https://via.placeholder.com/80" alt="User {{ $i }}"
-                                class="w-20 h-20 rounded-full border-4 border-indigo-500 shadow-md group-hover:scale-105 transition duration-300 hover:ring-4 hover:ring-indigo-300">
+                                class="w-20 h-20 rounded-full border-4 border-indigo-500 shadow-md hover:ring-4 hover:ring-indigo-300 transition">
                         </div>
-
                         <!-- Quote -->
                         <p class="italic text-sm text-gray-700 dark:text-gray-300 mb-5">
                             "{{ ['সত্যিই অসাধারণ সার্ভিস!', 'অরিজিনাল প্রোডাক্ট এবং টপ ক্লাস সাপোর্ট।', 'আমি রেগুলার কাস্টমার। এবারও দারুণ অভিজ্ঞতা!'][$i - 1] }}"
                         </p>
-
                         <!-- Stars -->
                         <div class="flex justify-center mb-3">
                             @for ($j = 0; $j < 5; $j++)
@@ -244,18 +215,17 @@
                                 </svg>
                             @endfor
                         </div>
-
                         <!-- Name -->
-                        <h3
-                            class="text-lg font-semibold text-indigo-700 dark:text-yellow-400 group-hover:text-indigo-900 dark:group-hover:text-yellow-300 transition">
-                            গ্রাহক {{ $i }}
-                        </h3>
+                        <h3 class="text-lg font-semibold text-indigo-700 dark:text-yellow-400">গ্রাহক
+                            {{ $i }}</h3>
                         <p class="text-xs text-gray-500">বাংলাদেশ</p>
                     </div>
                 @endforeach
             </div>
         </div>
     </section>
+
+
 
 
     <!-- How It Works Section -->
@@ -271,44 +241,69 @@
             </p>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-                @foreach ([['title' => 'ধাপ ১: পণ্য/সার্ভিস নির্বাচন', 'desc' => 'আমাদের প্রোডাক্ট পেজ থেকে আপনার পছন্দের প্রোডাক্ট/প্যাকেজ বেছে নিন।', 'icon' => 'M12 4v16m8-8H4'], ['title' => 'ধাপ ২: অর্ডার কনফার্ম', 'desc' => 'একটি কাস্টমার ফর্ম পূরণ করুন এবং অর্ডার নিশ্চিত করুন।', 'icon' => 'M3 10h2l1 2h13l1-2h2m-2 0a9 9 0 01-18 0'], ['title' => 'ধাপ ৩: হোম ডেলিভারি', 'desc' => 'পণ্য আপনার ঠিকানায় পৌঁছে যাবে ২৪–৪৮ ঘণ্টার মধ্যে।', 'icon' => 'M9 17v-2a2 2 0 012-2h2a2 2 0 012 2v2m-6 4h6']] as $index => $step)
-                    <div class="group bg-blue-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-3xl p-8 text-center shadow transition-all transform duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-yellow-200 dark:hover:shadow-yellow-400/20"
-                        data-aos="zoom-in-up" data-aos-delay="{{ ($index + 1) * 100 }}">
-
-                        <div
-                            class="w-16 h-16 flex items-center justify-center mx-auto mb-6 rounded-full bg-indigo-100 dark:bg-indigo-700 group-hover:scale-110 transition">
-                            <svg class="w-8 h-8 text-indigo-600 dark:text-white" fill="none" stroke="currentColor"
-                                stroke-width="2" viewBox="0 0 24 24">
-                                <path d="{{ $step['icon'] }}" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </div>
-
-                        <h3
-                            class="text-xl font-semibold mb-2 group-hover:text-indigo-700 dark:group-hover:text-yellow-400 transition">
-                            {{ $step['title'] }}
-                        </h3>
-                        <p class="text-sm text-gray-600 dark:text-gray-300">{{ $step['desc'] }}</p>
+                <!-- Step 1 -->
+                <div class="bg-blue-50 dark:bg-gray-800 rounded-3xl p-8 text-center shadow hover:shadow-lg transition transform hover:-translate-y-1"
+                    data-aos="zoom-in-up" data-aos-delay="100">
+                    <div
+                        class="w-16 h-16 flex items-center justify-center mx-auto mb-6 rounded-full bg-indigo-100 dark:bg-indigo-700">
+                        <svg class="w-8 h-8 text-indigo-600 dark:text-white" fill="none" stroke="currentColor"
+                            stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
                     </div>
-                @endforeach
+                    <h3 class="text-xl font-semibold mb-2">ধাপ ১: পণ্য/সার্ভিস নির্বাচন</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-300">আমাদের প্রোডাক্ট পেজ থেকে আপনার পছন্দের
+                        প্রোডাক্ট/প্যাকেজ বেছে নিন।</p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="bg-blue-50 dark:bg-gray-800 rounded-3xl p-8 text-center shadow hover:shadow-lg transition transform hover:-translate-y-1"
+                    data-aos="zoom-in-up" data-aos-delay="200">
+                    <div
+                        class="w-16 h-16 flex items-center justify-center mx-auto mb-6 rounded-full bg-indigo-100 dark:bg-indigo-700">
+                        <svg class="w-8 h-8 text-indigo-600 dark:text-white" fill="none" stroke="currentColor"
+                            stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M3 10h2l1 2h13l1-2h2m-2 0a9 9 0 01-18 0" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">ধাপ ২: অর্ডার কনফার্ম</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-300">একটি কাস্টমার ফর্ম পূরণ করুন এবং অর্ডার নিশ্চিত
+                        করুন।</p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="bg-blue-50 dark:bg-gray-800 rounded-3xl p-8 text-center shadow hover:shadow-lg transition transform hover:-translate-y-1"
+                    data-aos="zoom-in-up" data-aos-delay="300">
+                    <div
+                        class="w-16 h-16 flex items-center justify-center mx-auto mb-6 rounded-full bg-indigo-100 dark:bg-indigo-700">
+                        <svg class="w-8 h-8 text-indigo-600 dark:text-white" fill="none" stroke="currentColor"
+                            stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M9 17v-2a2 2 0 012-2h2a2 2 0 012 2v2m-6 4h6" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">ধাপ ৩: হোম ডেলিভারি</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-300">পণ্য আপনার ঠিকানায় পৌঁছে যাবে ২৪–৪৮ ঘণ্টার
+                        মধ্যে।</p>
+                </div>
             </div>
         </div>
     </section>
 
+
+
+
     <!-- CTA Section -->
     <section id="cta"
-        class="py-24 bg-gradient-to-br from-indigo-600 to-blue-600 dark:from-gray-800 dark:to-gray-900 text-white relative overflow-hidden"
+        class="py-24 bg-gradient-to-br from-indigo-600 to-blue-600 text-white relative overflow-hidden"
         data-aos="fade-up">
-
-        <!-- Subtle Texture Background -->
-        <div
-            class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] dark:opacity-5">
+        <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]">
         </div>
 
         <div class="relative max-w-6xl mx-auto px-6 text-center">
-            <h2 class="text-4xl font-extrabold mb-4 leading-tight text-white dark:text-yellow-400">
-                এখনই আপনার অর্ডার কনফার্ম করুন
-            </h2>
-            <p class="text-lg text-indigo-100 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
+            <h2 class="text-4xl font-extrabold mb-4 leading-tight">এখনই আপনার অর্ডার কনফার্ম করুন</h2>
+            <p class="text-lg text-indigo-100 mb-8 max-w-2xl mx-auto">
                 দেরি না করে আজই শুরু করুন – আমাদের টিম প্রস্তুত আপনাকে সেবা দিতে।
             </p>
 
@@ -318,7 +313,7 @@
                     এখনই অর্ডার করুন
                 </a>
                 <a href="#contact"
-                    class="border border-white dark:border-indigo-400 hover:bg-white hover:text-indigo-700 dark:hover:bg-white dark:hover:text-indigo-700 font-semibold px-8 py-3 rounded-full transition">
+                    class="border border-white hover:bg-white hover:text-indigo-700 font-semibold px-8 py-3 rounded-full transition">
                     আমাদের সাথে যোগাযোগ
                 </a>
             </div>
@@ -337,69 +332,77 @@
             </p>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
-                @foreach ([['🌐', 'ওয়েবসাইট ডিজাইন', 'ব্যবসার জন্য আধুনিক, দ্রুতগতির ও মোবাইল রেসপন্সিভ ডিজাইন।'], ['🚀', 'SEO অপ্টিমাইজেশন', 'আপনার ওয়েবসাইট Google-এ র‍্যাংক করাতে সম্পূর্ণ SEO সমাধান।'], ['🛒', 'ই-কমার্স ডেভেলপমেন্ট', 'সম্পূর্ণ ফিচারসহ অনলাইন শপ তৈরি — অর্ডার, পেমেন্ট, স্টক ম্যানেজমেন্ট।'], ['🔒', 'ওয়েব সিকিউরিটি', 'ম্যালওয়্যার রিমুভাল, ফায়ারওয়াল, ব্যাকআপ সিস্টেম সহ ওয়েব নিরাপত্তা।'], ['📱', 'সোশ্যাল মিডিয়া মার্কেটিং', 'Facebook Boost, Branding এবং Messenger Automation সার্ভিস।'], ['💡', 'কাস্টম সফটওয়্যার ডেভেলপমেন্ট', 'স্কুল, কোম্পানি বা দোকানের জন্য ERP/Inventory টাইপ কাস্টম সফটওয়্যার।']] as $index => [$icon, $title, $desc])
-                    <div class="bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-md border border-gray-100 dark:border-gray-700 transition-all duration-300 hover:scale-[1.03] hover:shadow-2xl hover:shadow-yellow-200 dark:hover:shadow-yellow-400/20 group"
-                        data-aos="zoom-in-up" data-aos-delay="{{ ($index + 1) * 100 }}">
-                        <div class="mb-4">
-                            <div
-                                class="w-16 h-16 mx-auto bg-indigo-100 dark:bg-indigo-700 rounded-full flex items-center justify-center text-3xl transition-all group-hover:rotate-6">
-                                {{ $icon }}
-                            </div>
-                        </div>
-                        <h3 class="text-xl font-bold mb-2 text-indigo-700 dark:text-yellow-400">{{ $title }}
-                        </h3>
-                        <p class="text-sm text-gray-600 dark:text-gray-300">{{ $desc }}</p>
+                <!-- Service 1 -->
+                <div class="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl shadow hover:shadow-lg transition"
+                    data-aos="zoom-in-up" data-aos-delay="100">
+                    <div class="mb-4">
+                        <img src="https://via.placeholder.com/60?text=🌐" alt="Service 1" class="mx-auto">
                     </div>
-                @endforeach
+                    <h3 class="text-xl font-semibold mb-2">ওয়েবসাইট ডিজাইন</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-300">ব্যবসার জন্য আধুনিক, দ্রুতগতির ও মোবাইল
+                        রেসপন্সিভ ডিজাইন।</p>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl shadow hover:shadow-lg transition"
+                    data-aos="zoom-in-up" data-aos-delay="200">
+                    <div class="mb-4">
+                        <img src="https://via.placeholder.com/60?text=🚀" alt="Service 2" class="mx-auto">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">SEO অপ্টিমাইজেশন</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-300">আপনার ওয়েবসাইট Google-এ র‍্যাংক করাতে সম্পূর্ণ
+                        SEO সমাধান।</p>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl shadow hover:shadow-lg transition"
+                    data-aos="zoom-in-up" data-aos-delay="300">
+                    <div class="mb-4">
+                        <img src="https://via.placeholder.com/60?text=🛒" alt="Service 3" class="mx-auto">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">ই-কমার্স ডেভেলপমেন্ট</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-300">সম্পূর্ণ ফিচারসহ অনলাইন শপ তৈরি — অর্ডার,
+                        পেমেন্ট, স্টক ম্যানেজমেন্ট।</p>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl shadow hover:shadow-lg transition"
+                    data-aos="zoom-in-up" data-aos-delay="400">
+                    <div class="mb-4">
+                        <img src="https://via.placeholder.com/60?text=🔒" alt="Service 4" class="mx-auto">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">ওয়েব সিকিউরিটি</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-300">ম্যালওয়্যার রিমুভাল, ফায়ারওয়াল, ব্যাকআপ সিস্টেম
+                        সহ ওয়েব নিরাপত্তা।</p>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl shadow hover:shadow-lg transition"
+                    data-aos="zoom-in-up" data-aos-delay="500">
+                    <div class="mb-4">
+                        <img src="https://via.placeholder.com/60?text=📱" alt="Service 5" class="mx-auto">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">সোশ্যাল মিডিয়া মার্কেটিং</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-300">Facebook Boost, Branding এবং Messenger
+                        Automation সার্ভিস।</p>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl shadow hover:shadow-lg transition"
+                    data-aos="zoom-in-up" data-aos-delay="600">
+                    <div class="mb-4">
+                        <img src="https://via.placeholder.com/60?text=💡" alt="Service 6" class="mx-auto">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">কাস্টম সফটওয়্যার ডেভেলপমেন্ট</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-300">স্কুল, কোম্পানি বা দোকানের জন্য ERP/Inventory
+                        টাইপ কাস্টম সফটওয়্যার।</p>
+                </div>
             </div>
         </div>
     </section>
 
 
-
     <!-- Pricing Section -->
-    <section id="pricing" class="py-24 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-white"
-        data-aos="fade-up">
-        <div class="max-w-7xl mx-auto px-6 text-center">
-            <h2 class="text-4xl font-extrabold text-indigo-700 dark:text-yellow-400 mb-4">প্ল্যান ও প্রাইসিং</h2>
-            <p class="text-lg text-gray-600 dark:text-gray-300 mb-16 max-w-2xl mx-auto">
-                আপনার প্রয়োজন অনুযায়ী বেছে নিন উপযুক্ত প্যাকেজ।
-            </p>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-                @foreach ([['Starter', '৳999', 'সাধারণ ওয়েবসাইট / ল্যান্ডিং পেজ', ['১টি পেজ ডিজাইন', 'মোবাইল রেসপন্সিভ', '৭ দিন সাপোর্ট'], 'indigo', 100], ['Standard', '৳1999', 'ব্যবসার জন্য উপযুক্ত', ['৩টি পেজ ডিজাইন', 'SEO Optimized', '১৫ দিন সাপোর্ট'], 'yellow', 200], ['Premium', '৳4999', 'পুরো বিজনেস সাইট বা ই-কমার্স', ['৭+ পেজ', 'Advanced SEO', '৩০ দিন সাপোর্ট'], 'indigo', 300]] as $index => [$title, $price, $desc, $features, $color, $delay])
-                    <div class="relative bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-md border border-gray-200 dark:border-gray-700 transition-all duration-300 transform hover:scale-[1.03] hover:shadow-xl hover:shadow-{{ $color }}-200 dark:hover:shadow-{{ $color }}-400/30"
-                        data-aos="fade-up" data-aos-delay="{{ $delay }}">
-                        @if ($title === 'Standard')
-                            <div
-                                class="absolute top-0 right-0 -mt-4 -mr-4 bg-yellow-400 text-indigo-800 text-xs uppercase font-bold px-3 py-1 rounded-full shadow-md">
-                                Most Popular
-                            </div>
-                        @endif
-                        <h3 class="text-xl font-bold mb-2 text-{{ $color }}-700 dark:text-yellow-400">
-                            {{ $title }}</h3>
-                        <p class="text-4xl font-extrabold text-{{ $color }}-700 dark:text-yellow-400 mb-2">
-                            {{ $price }}</p>
-                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">{{ $desc }}</p>
-                        <ul class="space-y-2 text-sm text-left mb-6">
-                            @foreach ($features as $f)
-                                <li>✅ {{ $f }}</li>
-                            @endforeach
-                        </ul>
-                        <a href="#order-now"
-                            class="block bg-{{ $color }}-600 text-white py-2 rounded-full font-semibold hover:bg-{{ $color }}-700 transition">
-                            অর্ডার করুন
-                        </a>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-    </section>
-
-
-
-    <!-- Pricing Section -->
-
     <section id="pricing" class="py-24 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-white"
         data-aos="fade-up">
         <div class="max-w-7xl mx-auto px-6 text-center">
@@ -512,10 +515,6 @@
             </form>
         </div>
     </section>
-
-
-
-
 
 
     <!-- FAQ Section -->
@@ -648,34 +647,43 @@
         </div>
     </footer>
 
-
+    <!-- Cursor Dot -->
     <div class="cursor-dot" id="cursorDot"></div>
 
-    <!-- Floating Scroll-to-Top Button -->
-    <button onclick="scrollToTop()" id="scrollTopBtn"
-        class="fixed bottom-6 right-6 z-50 bg-indigo-600 hover:bg-indigo-700 dark:bg-yellow-400 dark:hover:bg-yellow-500 text-white dark:text-indigo-800 p-4 rounded-full shadow-lg transition duration-300 hidden aria-label Scroll to Top">
-        <!-- Up Arrow Icon -->
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-            stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
-        </svg>
-    </button>
 
+    <!-- Add more sections here: Features, About, Video, Services, How It Works, Testimonials, Pricing, FAQ, Newsletter, CTA, Footer -->
 
     <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.3/dist/js/splide.min.js"></script>
-
     <script>
         AOS.init({
-            duration: 800,
+            duration: 1000,
             once: true,
-            easing: 'ease-out-cubic',
-            mirror: false,
-            throttleDelay: 99,
         });
     </script>
 
+    {{-- Alpine JS --}}
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+
+    <!-- Splide JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.3/dist/js/splide.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (window.innerWidth < 768) {
+                new Splide('#testimonial-slider', {
+                    type: 'loop',
+                    perPage: 1,
+                    autoplay: true,
+                    interval: 5000,
+                    arrows: false,
+                    pagination: true,
+                }).mount();
+            }
+        });
+    </script>
+
+
+    {{-- Smooth Scroll --}}
     <script>
         const dot = document.getElementById('cursorDot');
         let mouseX = 0,
@@ -695,30 +703,33 @@
             requestAnimationFrame(animateCursor);
         }
 
-        animateCursor();
-    </script>
 
-    {{-- floting action button --}}
-    <script>
-        // Show button on scroll
-        const scrollBtn = document.getElementById("scrollTopBtn");
-
-        window.addEventListener("scroll", () => {
-            if (window.scrollY > 200) {
-                scrollBtn.classList.remove("hidden");
-            } else {
-                scrollBtn.classList.add("hidden");
+        let animationFrame;
+        window.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            if (!animationFrame) {
+                animationFrame = requestAnimationFrame(() => {
+                    dotX += (mouseX - dotX) * 0.15;
+                    dotY += (mouseY - dotY) * 0.15;
+                    dot.style.transform = `translate3d(${dotX}px, ${dotY}px, 0)`;
+                    animationFrame = null;
+                });
             }
         });
 
-        // Smooth scroll to top
-        function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        }
+
+        animateCursor();
     </script>
+
+    AOS.init({
+    duration: 800,
+    once: true,
+    easing: 'ease-out-cubic',
+    mirror: false,
+    throttleDelay: 99,
+    });
+
 
 </body>
 
